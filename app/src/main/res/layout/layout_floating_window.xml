@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- ══ EXPANDED VIEW ══ -->
+    <LinearLayout
+        android:id="@+id/expandedView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/floating_window_bg"
+        android:elevation="20dp">
+
+        <!-- Title Bar -->
+        <LinearLayout
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="6dp"
+            android:background="@drawable/title_bar_bg">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Floating Window"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:ellipsize="end"
+                android:singleLine="true" />
+
+            <ImageButton android:id="@+id/btnLock"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@android:drawable/ic_lock_idle_lock"
+                android:background="@drawable/title_btn_bg"
+                android:contentDescription="Lock" android:scaleType="fitCenter"
+                android:padding="6dp" />
+
+            <ImageButton android:id="@+id/btnSettings"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@android:drawable/ic_menu_preferences"
+                android:background="@drawable/title_btn_bg"
+                android:contentDescription="Settings" android:scaleType="fitCenter"
+                android:padding="6dp" android:layout_marginStart="2dp" />
+
+            <ImageButton android:id="@+id/btnMinimize"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@drawable/ic_minimize"
+                android:background="@drawable/title_btn_bg"
+                android:contentDescription="Minimize" android:scaleType="fitCenter"
+                android:padding="6dp" android:layout_marginStart="2dp" />
+
+            <ImageButton android:id="@+id/btnClose"
+                android:layout_width="32dp" android:layout_height="32dp"
+                android:src="@drawable/ic_close"
+                android:background="@drawable/title_btn_close_bg"
+                android:contentDescription="Close" android:scaleType="fitCenter"
+                android:padding="6dp" android:layout_marginStart="2dp" />
+        </LinearLayout>
+
+        <!-- Tab Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@color/tab_bar_bg">
+
+            <TextView android:id="@+id/btnTabWebView"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:text="🌐" android:gravity="center" android:textSize="16sp"
+                android:background="@drawable/tab_btn_selector" android:contentDescription="Browser" />
+
+            <TextView android:id="@+id/btnTabNotes"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:text="📝" android:gravity="center" android:textSize="16sp"
+                android:background="@drawable/tab_btn_selector" android:contentDescription="Notes" />
+
+            <TextView android:id="@+id/btnTabCalc"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:text="🔢" android:gravity="center" android:textSize="16sp"
+                android:background="@drawable/tab_btn_selector" android:contentDescription="Calculator" />
+
+            <TextView android:id="@+id/btnTabTimer"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:text="⏱️" android:gravity="center" android:textSize="16sp"
+                android:background="@drawable/tab_btn_selector" android:contentDescription="Timer" />
+
+            <TextView android:id="@+id/btnTabMedia"
+                android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:text="🎵" android:gravity="center" android:textSize="16sp"
+                android:background="@drawable/tab_btn_selector" android:contentDescription="Media" />
+        </LinearLayout>
+
+        <!-- Content Area -->
+        <FrameLayout
+            android:id="@+id/contentArea"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/floating_content_bg">
+
+            <!-- WebView Tab -->
+            <LinearLayout android:id="@+id/tabWebView"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+                    android:orientation="horizontal" android:paddingStart="6dp" android:paddingEnd="6dp"
+                    android:gravity="center_vertical" android:background="@color/url_bar_bg">
+                    <ImageButton android:id="@+id/btnBack"
+                        android:layout_width="32dp" android:layout_height="32dp"
+                        android:src="@android:drawable/ic_media_previous"
+                        android:background="@drawable/title_btn_bg2" android:contentDescription="Back" android:scaleType="fitCenter" android:padding="6dp" />
+                    <ImageButton android:id="@+id/btnFwd"
+                        android:layout_width="32dp" android:layout_height="32dp"
+                        android:src="@android:drawable/ic_media_next"
+                        android:background="@drawable/title_btn_bg2" android:contentDescription="Forward" android:scaleType="fitCenter" android:padding="6dp" android:layout_marginStart="2dp" />
+                    <EditText android:id="@+id/urlBar"
+                        android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1"
+                        android:layout_marginStart="6dp" android:hint="Enter URL..."
+                        android:inputType="textUri" android:textSize="12sp"
+                        android:background="@drawable/url_bar_bg" android:paddingStart="8dp" android:paddingEnd="8dp"
+                        android:singleLine="true" android:imeOptions="actionGo" />
+                    <ImageButton android:id="@+id/btnGo"
+                        android:layout_width="32dp" android:layout_height="32dp"
+                        android:src="@android:drawable/ic_media_play"
+                        android:background="@drawable/title_btn_bg2" android:contentDescription="Go" android:scaleType="fitCenter" android:padding="6dp" android:layout_marginStart="4dp" />
+                </LinearLayout>
+                <WebView android:id="@+id/webView"
+                    android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Notes Tab -->
+            <LinearLayout android:id="@+id/tabNotes"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:visibility="gone">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+                    android:orientation="horizontal" android:paddingStart="8dp" android:paddingEnd="8dp"
+                    android:gravity="center_vertical" android:background="@color/url_bar_bg">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="Quick Notes" android:textSize="13sp" android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+                    <ImageButton android:id="@+id/btnSaveNote"
+                        android:layout_width="32dp" android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_save"
+                        android:background="@drawable/title_btn_bg2" android:contentDescription="Save" android:scaleType="fitCenter" android:padding="6dp" />
+                    <ImageButton android:id="@+id/btnClearNote"
+                        android:layout_width="32dp" android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:background="@drawable/title_btn_bg2" android:contentDescription="Clear" android:scaleType="fitCenter" android:padding="6dp" android:layout_marginStart="4dp" />
+                </LinearLayout>
+                <EditText android:id="@+id/notesEditor"
+                    android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                    android:gravity="top|start" android:inputType="textMultiLine"
+                    android:hint="Type your notes here..." android:textSize="14sp"
+                    android:background="@null" android:padding="12dp"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+
+            <!-- Calculator Tab -->
+            <LinearLayout android:id="@+id/tabCalc"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:visibility="gone" android:padding="6dp">
+
+                <TextView android:id="@+id/calcDisplay"
+                    android:layout_width="match_parent" android:layout_height="60dp"
+                    android:gravity="end|center_vertical" android:text="0"
+                    android:textSize="28sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:paddingEnd="12dp"
+                    android:background="@drawable/calc_display_bg" android:layout_marginBottom="6dp" />
+
+                <!-- Row 1 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                    <Button android:id="@+id/calcClear" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="AC" android:textSize="14sp" android:backgroundTint="@color/calc_fn" android:textColor="#FFFFFF" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcSign" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="+/-" android:textSize="14sp" android:backgroundTint="@color/calc_fn" android:textColor="#FFFFFF" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcPct" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="%" android:textSize="14sp" android:backgroundTint="@color/calc_fn" android:textColor="#FFFFFF" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcDiv" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="÷" android:textSize="18sp" android:backgroundTint="@color/calc_op" android:textColor="#FFFFFF" />
+                </LinearLayout>
+                <!-- Row 2 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                    <Button android:id="@+id/calc7" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="7" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc8" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="8" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc9" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="9" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcMul" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="×" android:textSize="18sp" android:backgroundTint="@color/calc_op" android:textColor="#FFFFFF" />
+                </LinearLayout>
+                <!-- Row 3 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                    <Button android:id="@+id/calc4" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="4" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc5" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="5" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc6" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="6" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcMinus" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="−" android:textSize="18sp" android:backgroundTint="@color/calc_op" android:textColor="#FFFFFF" />
+                </LinearLayout>
+                <!-- Row 4 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                    <Button android:id="@+id/calc1" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="1" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc2" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="2" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calc3" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="3" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcPlus" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="+" android:textSize="18sp" android:backgroundTint="@color/calc_op" android:textColor="#FFFFFF" />
+                </LinearLayout>
+                <!-- Row 5 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+                    <Button android:id="@+id/calc0" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2" android:text="0" android:textSize="16sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcDot" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="." android:textSize="18sp" android:backgroundTint="@color/calc_num" android:textColor="@color/text_primary" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcDel" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="⌫" android:textSize="14sp" android:backgroundTint="@color/calc_fn" android:textColor="#FFFFFF" android:layout_marginEnd="3dp" />
+                    <Button android:id="@+id/calcEquals" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="=" android:textSize="18sp" android:backgroundTint="@color/accent" android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Timer Tab -->
+            <LinearLayout android:id="@+id/tabTimer"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp"
+                android:visibility="gone">
+
+                <Chronometer android:id="@+id/chronometer"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="48sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:layout_marginBottom="32dp" />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton android:id="@+id/btnTimerStart"
+                        android:layout_width="56dp" android:layout_height="56dp"
+                        android:src="@android:drawable/ic_media_play"
+                        android:background="@drawable/timer_btn_bg_green"
+                        android:contentDescription="Start" android:scaleType="fitCenter" android:padding="12dp" />
+                    <ImageButton android:id="@+id/btnTimerPause"
+                        android:layout_width="56dp" android:layout_height="56dp"
+                        android:src="@android:drawable/ic_media_pause"
+                        android:background="@drawable/timer_btn_bg_amber"
+                        android:contentDescription="Pause" android:scaleType="fitCenter" android:padding="12dp"
+                        android:layout_marginStart="12dp" />
+                    <ImageButton android:id="@+id/btnTimerReset"
+                        android:layout_width="56dp" android:layout_height="56dp"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:background="@drawable/timer_btn_bg_red"
+                        android:contentDescription="Reset" android:scaleType="fitCenter" android:padding="12dp"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Media Tab -->
+            <LinearLayout android:id="@+id/tabMedia"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:orientation="vertical" android:gravity="center" android:padding="16dp"
+                android:visibility="gone">
+
+                <TextView android:id="@+id/tvMediaInfo"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center" android:textSize="13sp"
+                    android:textColor="@color/text_secondary" android:layout_marginBottom="24dp"
+                    android:lineSpacingExtra="4dp" />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton android:id="@+id/btnMediaPrev"
+                        android:layout_width="56dp" android:layout_height="56dp"
+                        android:src="@android:drawable/ic_media_previous"
+                        android:background="@drawable/timer_btn_bg_amber"
+                        android:contentDescription="Previous" android:scaleType="fitCenter" android:padding="12dp" />
+                    <ImageButton android:id="@+id/btnMediaPlay"
+                        android:layout_width="64dp" android:layout_height="64dp"
+                        android:src="@android:drawable/ic_media_play"
+                        android:background="@drawable/timer_btn_bg_green"
+                        android:contentDescription="Play/Pause" android:scaleType="fitCenter" android:padding="12dp"
+                        android:layout_marginStart="12dp" />
+                    <ImageButton android:id="@+id/btnMediaNext"
+                        android:layout_width="56dp" android:layout_height="56dp"
+                        android:src="@android:drawable/ic_media_next"
+                        android:background="@drawable/timer_btn_bg_amber"
+                        android:contentDescription="Next" android:scaleType="fitCenter" android:padding="12dp"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Opacity Bar -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="32dp"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:paddingStart="10dp" android:paddingEnd="10dp"
+            android:background="@color/floating_status_bg">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔆" android:textSize="12sp" />
+            <SeekBar android:id="@+id/opacityBar"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_marginStart="6dp" android:layout_marginEnd="6dp"
+                android:max="100" android:progress="100" />
+            <View android:layout_width="8dp" android:layout_height="8dp"
+                android:background="@drawable/status_dot" />
+        </LinearLayout>
+
+        <!-- Resize Handle -->
+        <View
+            android:id="@+id/resizeHandle"
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:background="@drawable/resize_handle_bg" />
+
+    </LinearLayout>
+
+    <!-- ══ MINIMIZED BUBBLE ══ -->
+    <LinearLayout
+        android:id="@+id/minimizedView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:elevation="20dp">
+
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bubble_bg">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="⬛"
+                android:gravity="center"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:orientation="horizontal"
+            android:background="@drawable/bubble_actions_bg" android:padding="4dp">
+            <ImageButton android:id="@+id/btnBubbleExpand"
+                android:layout_width="30dp" android:layout_height="30dp"
+                android:src="@drawable/ic_expand"
+                android:background="@drawable/title_btn_bg"
+                android:contentDescription="Restore" android:scaleType="fitCenter" android:padding="4dp" />
+            <ImageButton android:id="@+id/btnBubbleClose"
+                android:layout_width="30dp" android:layout_height="30dp"
+                android:src="@drawable/ic_close"
+                android:background="@drawable/title_btn_close_bg"
+                android:contentDescription="Close" android:scaleType="fitCenter" android:padding="4dp"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

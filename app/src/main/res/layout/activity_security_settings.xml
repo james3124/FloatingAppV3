@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/accent"
+            app:title="Security"
+            app:titleTextColor="#FFFFFF" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Status -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp" app:cardElevation="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Lock Status" android:textSize="16sp" android:textStyle="bold"
+                        android:textColor="@color/text_primary" android:layout_marginBottom="8dp" />
+                    <TextView android:id="@+id/tvSecurityStatus"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🔓 No security set"
+                        android:textSize="15sp" android:textColor="@color/text_secondary" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Set lock type -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp" app:cardElevation="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="18dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Set Lock Type" android:textSize="16sp" android:textStyle="bold"
+                        android:textColor="@color/text_primary" android:layout_marginBottom="12dp" />
+                    <Button android:id="@+id/btnSetPin"
+                        android:layout_width="match_parent" android:layout_height="50dp"
+                        android:text="🔢  Set PIN Lock"
+                        android:backgroundTint="@color/accent" android:textColor="#FFFFFF"
+                        android:layout_marginBottom="8dp" />
+                    <Button android:id="@+id/btnSetPattern"
+                        android:layout_width="match_parent" android:layout_height="50dp"
+                        android:text="⬛  Set Pattern Lock"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Options (shown when security is enabled) -->
+            <LinearLayout
+                android:id="@+id/layoutSecurityOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp" app:cardElevation="2dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="18dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Options" android:textSize="16sp" android:textStyle="bold"
+                            android:textColor="@color/text_primary" android:layout_marginBottom="8dp" />
+
+                        <CheckBox android:id="@+id/cbBiometric"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="👆 Allow fingerprint / face unlock"
+                            android:textColor="@color/text_primary" android:textSize="14sp" />
+
+                        <CheckBox android:id="@+id/cbAutoLock"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="⏱️ Auto-lock when inactive"
+                            android:textColor="@color/text_primary" android:textSize="14sp"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Auto-lock after" android:textSize="13sp"
+                            android:textColor="@color/text_secondary" android:layout_marginTop="8dp" />
+                        <Spinner android:id="@+id/spinAutoLockTime"
+                            android:layout_width="match_parent" android:layout_height="48dp"
+                            android:layout_marginBottom="6dp" />
+
+                        <CheckBox android:id="@+id/cbHideContent"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:text="🙈 Hide content when locked"
+                            android:textColor="@color/text_primary" android:textSize="14sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button android:id="@+id/btnDisableSecurity"
+                    android:layout_width="match_parent" android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Remove Lock"
+                    android:backgroundTint="@color/error" android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <Button android:id="@+id/btnSaveSecuritySettings"
+                android:layout_width="match_parent" android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:text="Save Settings"
+                android:backgroundTint="@color/accent" android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

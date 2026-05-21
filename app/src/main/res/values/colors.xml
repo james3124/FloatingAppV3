@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#F4F6FA</color>
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="accent">#4F46E5</color>
+    <color name="accent_secondary">#EEF2FF</color>
+    <color name="error">#EF4444</color>
+    <color name="status_granted">#16A34A</color>
+    <color name="status_denied">#DC2626</color>
+
+    <!-- Floating window -->
+    <color name="floating_title_bg">#1E1B4B</color>
+    <color name="floating_content_bg">#FFFFFF</color>
+    <color name="floating_status_bg">#F8F8FF</color>
+    <color name="floating_border">#C7D2FE</color>
+    <color name="bubble_bg_color">#4F46E5</color>
+    <color name="status_dot_color">#22C55E</color>
+    <color name="tab_bar_bg">#F1F5F9</color>
+    <color name="url_bar_bg">#F1F5F9</color>
+
+    <!-- Calculator -->
+    <color name="calc_num">#F3F4F6</color>
+    <color name="calc_op">#6366F1</color>
+    <color name="calc_fn">#9CA3AF</color>
+</resources>
